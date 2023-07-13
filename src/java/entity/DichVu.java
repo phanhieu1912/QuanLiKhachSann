@@ -9,18 +9,19 @@ package entity;
  * @author Admin
  */
 public class DichVu {
-     private String iDDichVu;
-      private String tenDichVu;
-       private String giaDichVu;
-       private String imgDichVu;
-       private String desDichVu;
 
-    public DichVu(String iDDichVu, String tenDichVu, String giaDichVu, String imgDichVu, String desDichVu) {
+    private String iDDichVu;
+    private String tenDichVu;
+    private String giaDichVu;
+    private String desDichVu;
+    private String imgDichVu;
+
+    public DichVu(String iDDichVu, String tenDichVu, String giaDichVu, String desDichVu, String imgDichVu) {
         this.iDDichVu = iDDichVu;
         this.tenDichVu = tenDichVu;
         this.giaDichVu = giaDichVu;
-        this.imgDichVu = imgDichVu;
         this.desDichVu = desDichVu;
+        this.imgDichVu = imgDichVu;
     }
 
     public String getiDDichVu() {
@@ -47,14 +48,6 @@ public class DichVu {
         this.giaDichVu = giaDichVu;
     }
 
-    public String getImgDichVu() {
-        return imgDichVu;
-    }
-
-    public void setImgDichVu(String imgDichVu) {
-        this.imgDichVu = imgDichVu;
-    }
-
     public String getDesDichVu() {
         return desDichVu;
     }
@@ -63,11 +56,17 @@ public class DichVu {
         this.desDichVu = desDichVu;
     }
 
-    @Override
-    public String toString() {
-        return "DichVu{" + "iDDichVu=" + iDDichVu + ", tenDichVu=" + tenDichVu + ", giaDichVu=" + giaDichVu + ", imgDichVu=" + imgDichVu + ", desDichVu=" + desDichVu + '}';
+    public String getImgDichVu() {
+        return imgDichVu;
     }
 
-    
-       
+    public void setImgDichVu(String imgDichVu) {
+        this.imgDichVu = imgDichVu;
+    }
+
+    @Override
+    public String toString() {
+        return "DichVu{" + "iDDichVu=" + iDDichVu + ", tenDichVu=" + tenDichVu + ", giaDichVu=" + giaDichVu + ", desDichVu=" + desDichVu + ", imgDichVu=" + imgDichVu + '}';
+    }
+
 }

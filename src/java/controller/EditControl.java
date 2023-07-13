@@ -64,12 +64,25 @@ public class EditControl extends HttpServlet {
          response.setContentType("text/html;charset=UTF-8");
         String puser =request.getParameter("user");
         String ppassword =request.getParameter("password");
+        String oldPassword = request.getParameter("oldPassword");
         String cfmPassword = request.getParameter("confirmPassword");
-        System.out.println(puser + ppassword);
          
         DAO dao =new DAO();
-        dao.editPassword(puser, ppassword);
-        response.sendRedirect("manager.jsp");
+        Account a = dao.checkAccountOldPassword(puser, oldPassword);
+        if(a == null){
+            request.setAttribute("mess", "wrong password!");
+           request.getRequestDispatcher("EditPassword.jsp").forward(request, response);
+        }else{
+            if(ppassword.equals(cfmPassword)){
+                dao.editPassword(puser, ppassword);
+        response.sendRedirect("login.jsp");
+            }else{
+                request.setAttribute("mess1", "Confirm password does not match the new password ");
+                request.getRequestDispatcher("EditPassword.jsp").forward(request, response);
+            }
+            
+        }
+        
     }
 
     /**

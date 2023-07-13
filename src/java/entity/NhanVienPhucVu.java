@@ -9,16 +9,17 @@ package entity;
  * @author Admin
  */
 public class NhanVienPhucVu {
-     private String iDPhucVu;
-      private String tenPhucVu;
-       private String imgNVPV;
-        private String gioiTinh;
-         private String ngaySinh;
-          private String email;
-           private String diaChi;
-            private String soDienthoai;
-             private String iDPhong;
-              private String quocTich;
+
+    private String iDPhucVu;
+    private String tenPhucVu;
+    private String imgNVPV;
+    private String gioiTinh;
+    private String ngaySinh;
+    private String email;
+    private String diaChi;
+    private String soDienthoai;
+    private String iDPhong;
+    private String quocTich;
 
     public NhanVienPhucVu() {
     }
@@ -120,6 +121,5 @@ public class NhanVienPhucVu {
     public String toString() {
         return "NhanVienPhucVu{" + "iDPhucVu=" + iDPhucVu + ", tenPhucVu=" + tenPhucVu + ", imgNVPV=" + imgNVPV + ", gioiTinh=" + gioiTinh + ", ngaySinh=" + ngaySinh + ", email=" + email + ", diaChi=" + diaChi + ", soDienthoai=" + soDienthoai + ", iDPhong=" + iDPhong + ", quocTich=" + quocTich + '}';
     }
-              
-             
+
 }

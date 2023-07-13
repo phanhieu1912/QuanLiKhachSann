@@ -12,11 +12,15 @@ public class LoaiPhong {
     private String iDLoaiPhong;
     private String tenLoaiPhong;
     private String trangBi;
+    private String imgLoaiPhong;
+    private int soNguoi;
 
-    public LoaiPhong(String iDLoaiPhong, String tenLoaiPhong, String trangBi) {
+    public LoaiPhong(String iDLoaiPhong, String tenLoaiPhong, String trangBi, String imgLoaiPhong, int soNguoi) {
         this.iDLoaiPhong = iDLoaiPhong;
         this.tenLoaiPhong = tenLoaiPhong;
         this.trangBi = trangBi;
+        this.imgLoaiPhong = imgLoaiPhong;
+        this.soNguoi = soNguoi;
     }
 
     public String getiDLoaiPhong() {
@@ -43,10 +47,28 @@ public class LoaiPhong {
         this.trangBi = trangBi;
     }
 
+    public String getImgLoaiPhong() {
+        return imgLoaiPhong;
+    }
+
+    public void setImgLoaiPhong(String imgLoaiPhong) {
+        this.imgLoaiPhong = imgLoaiPhong;
+    }
+
+    public int getSoNguoi() {
+        return soNguoi;
+    }
+
+    public void setSoNguoi(int soNguoi) {
+        this.soNguoi = soNguoi;
+    }
+
     @Override
     public String toString() {
-        return "{" + "iDLoaiPhong=" + iDLoaiPhong + ", tenLoaiPhong=" + tenLoaiPhong + ", trangBi=" + trangBi + '}';
+        return "LoaiPhong{" + "iDLoaiPhong=" + iDLoaiPhong + ", tenLoaiPhong=" + tenLoaiPhong + ", trangBi=" + trangBi + ", imgLoaiPhong=" + imgLoaiPhong + ", soNguoi=" + soNguoi + '}';
     }
+    
+
     
     
 }

@@ -6,10 +6,12 @@ package controller;
 
 import dao.DAO;
 import entity.DichVu;
-
+import entity.LoaiPhong;
+import entity.NhanVienLeTan;
+import entity.NhanVienPhucVu;
+import entity.Review;
 import entity.Phong;
 
-import entity.Room;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -37,16 +39,22 @@ public class Control extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         //b1:get data from dao
-        DAO dao =new DAO();
-        List<Phong> list =dao.getAllRoom();
+        DAO dao = new DAO();
+        List<LoaiPhong> list = dao.getAllLoaiPhong();
         List<DichVu> listS = dao.getAllDichVu();
+        List<NhanVienLeTan> listLT = dao.getAllNVLT();
+        List<NhanVienPhucVu> listPV = dao.getAllNVPV();
+        List<Review> listRV = dao.getAllReview();
         //b2 :set data to jsp
-            request.setAttribute("listR", list);
-            request.setAttribute("listS", listS);
+        request.setAttribute("listR", list);
+        request.setAttribute("listS", listS);
+        request.setAttribute("listLT", listLT);
+        request.setAttribute("listPV", listPV);
+        request.setAttribute("listRV", listRV);
 //         request.setAttribute("listC", list2);
 //           request.setAttribute("list3", last);
         request.getRequestDispatcher("home.jsp").forward(request, response);
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

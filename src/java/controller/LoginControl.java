@@ -6,6 +6,7 @@ package controller;
 
 import dao.DAO;
 import entity.Account;
+import entity.KhachHang;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,18 +33,28 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username =request.getParameter("user");
-        String password =request.getParameter("pass");
-        DAO dao =new DAO();
+        String username = request.getParameter("user");
+        String password = request.getParameter("pass");
+        DAO dao = new DAO();
         Account a = dao.login(username, password);
-        if(a==null){
+        if (a == null) {
             request.setAttribute("mess", "wrong user or pass");
             request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else{
-            HttpSession session= request.getSession();
+        } else if (a.getIsAdmin() == 1 || a.getIsSell() == 1) {
+            HttpSession session = request.getSession();
             session.setAttribute("acc", a);
-                   response.sendRedirect("manager.jsp");
+            HttpSession userAcc = request.getSession();
+            userAcc.setAttribute("userAcc", a.getUser());
+            response.sendRedirect("manager.jsp");
+        } else if (a.getIsAdmin() == 0 && a.getIsSell() == 0) {
+            HttpSession session = request.getSession();
+            session.setAttribute("acc", a);
+            HttpSession userAcc = request.getSession();
+            userAcc.setAttribute("userAcc", a.getUser());
+            response.sendRedirect("home.jsp");
+
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

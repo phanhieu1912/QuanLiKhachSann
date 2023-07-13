@@ -31,9 +31,12 @@ public class DeleteControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String pid =request.getParameter("pid");
+        
         DAO dao =new DAO();
-        dao.deleteProduct(pid);
-        response.sendRedirect("ManagerControl");
+        dao.deleteNVLT(pid);
+        
+        
+        response.sendRedirect("EditEmployee");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -11,26 +11,18 @@ package entity;
 public class  Phong  extends LoaiPhong{
     public String iDPhong;
     public String iDPhucVu;
-    public String tenPhong;
     public String tinhTrang;
-    public String idLoaiPhong; 
-    public String idDichVuPhong;
-    public double giaPhong;
-    public String imgPhong;
+    public String idLoaiPhong;
+    public float giaPhong;
 
-    public Phong( String iDPhong, String iDPhucVu, String tenPhong, String tinhTrang, String idLoaiPhong, String idDichVuPhong, double GiaPhong, String imgPhong, String iDLoaiPhong, String tenLoaiPhong, String trangBi) {
-        super(iDLoaiPhong, tenLoaiPhong, trangBi);
+    public Phong(String iDPhong, String iDPhucVu, String tinhTrang, String idLoaiPhong, float giaPhong, String iDLoaiPhong, String tenLoaiPhong, String trangBi, String imgLoaiPhong, int soNguoi) {
+        super(iDLoaiPhong, tenLoaiPhong, trangBi, imgLoaiPhong, soNguoi);
         this.iDPhong = iDPhong;
         this.iDPhucVu = iDPhucVu;
-        this.tenPhong = tenPhong;
         this.tinhTrang = tinhTrang;
         this.idLoaiPhong = idLoaiPhong;
-        this.idDichVuPhong = idDichVuPhong;
-        this.giaPhong = GiaPhong;
-        this.imgPhong = imgPhong;
+        this.giaPhong = giaPhong;
     }
-
-   
 
     public String getiDPhong() {
         return iDPhong;
@@ -46,14 +38,6 @@ public class  Phong  extends LoaiPhong{
 
     public void setiDPhucVu(String iDPhucVu) {
         this.iDPhucVu = iDPhucVu;
-    }
-
-    public String getTenPhong() {
-        return tenPhong;
-    }
-
-    public void setTenPhong(String tenPhong) {
-        this.tenPhong = tenPhong;
     }
 
     public String getTinhTrang() {
@@ -72,36 +56,19 @@ public class  Phong  extends LoaiPhong{
         this.idLoaiPhong = idLoaiPhong;
     }
 
-    public String getIdDichVuPhong() {
-        return idDichVuPhong;
-    }
-
-    public void setIdDichVuPhong(String idDichVuPhong) {
-        this.idDichVuPhong = idDichVuPhong;
-    }
-
-    public double getGiaPhong() {
+    public float getGiaPhong() {
         return giaPhong;
     }
 
-    public void setGiaPhong(double GiaPhong) {
-        this.giaPhong = GiaPhong;
-    }
-
-    public String getImgPhong() {
-        return imgPhong;
-    }
-
-    public void setImgPhong(String imgPhong) {
-        this.imgPhong = imgPhong;
+    public void setGiaPhong(float giaPhong) {
+        this.giaPhong = giaPhong;
     }
 
     @Override
     public String toString() {
-        return "Phong{" +super.toString()+ "iDPhong=" + iDPhong + ", iDPhucVu=" + iDPhucVu + ", tenPhong=" + tenPhong + ", tinhTrang=" + tinhTrang + ", idLoaiPhong=" + idLoaiPhong + ", idDichVuPhong=" + idDichVuPhong + ", GiaPhong=" + giaPhong + ", imgPhong=" + imgPhong + '}';
+        return "Phong{" + "iDPhong=" + iDPhong + ", iDPhucVu=" + iDPhucVu + ", tinhTrang=" + tinhTrang + ", idLoaiPhong=" + idLoaiPhong + ", giaPhong=" + giaPhong + '}';
     }
-    
-    
+
     
 
 }

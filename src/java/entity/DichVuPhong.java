@@ -8,22 +8,30 @@ package entity;
  *
  * @author Admin
  */
-public class DichVuPhong extends DichVu{
+public class DichVuPhong extends ThuePhong{
      private String iDDichVuPhong;
-      private String iDPhong;
+     private String iDPhong;
+     private String iDDichVu;
+     private int soLuongDichVu; 
+     private String tenDichVu;
+     private float giaDichVu;
+     private String desDichVu;
+     private String imgDichVu;
+     private int iDChiTietThuePhong;
+     
+     
 
-    public DichVuPhong() {
-    }
-
-    public DichVuPhong(String iDDichVuPhong, String iDPhong) {
+    public DichVuPhong(String iDDichVuPhong, String iDPhong, String iDDichVu, int soLuongDichVu, String tenDichVu, float giaDichVu, String desDichVu, String imgDichVu, int iDChiTietThuePhong, int iDThuePhong, String iDKhachHang, String iDkhachhang, String tenKhachHang, String diaChi, String gioiTinh, String cMND, String phoneNumber, String email, String quocTich) {
+        super(iDThuePhong, iDKhachHang, iDkhachhang, tenKhachHang, diaChi, gioiTinh, cMND, phoneNumber, email, quocTich);
         this.iDDichVuPhong = iDDichVuPhong;
         this.iDPhong = iDPhong;
-    }
-
-    public DichVuPhong(String iDDichVuPhong, String iDPhong, String iDDichVu, String tenDichVu, String giaDichVu) {
-        super(iDDichVu, tenDichVu, giaDichVu);
-        this.iDDichVuPhong = iDDichVuPhong;
-        this.iDPhong = iDPhong;
+        this.iDDichVu = iDDichVu;
+        this.soLuongDichVu = soLuongDichVu;
+        this.tenDichVu = tenDichVu;
+        this.giaDichVu = giaDichVu;
+        this.desDichVu = desDichVu;
+        this.imgDichVu = imgDichVu;
+        this.iDChiTietThuePhong = iDChiTietThuePhong;
     }
 
     public String getiDDichVuPhong() {
@@ -42,9 +50,69 @@ public class DichVuPhong extends DichVu{
         this.iDPhong = iDPhong;
     }
 
+    public String getiDDichVu() {
+        return iDDichVu;
+    }
+
+    public void setiDDichVu(String iDDichVu) {
+        this.iDDichVu = iDDichVu;
+    }
+
+    public int getSoLuongDichVu() {
+        return soLuongDichVu;
+    }
+
+    public void setSoLuongDichVu(int soLuongDichVu) {
+        this.soLuongDichVu = soLuongDichVu;
+    }
+
+    public String getTenDichVu() {
+        return tenDichVu;
+    }
+
+    public void setTenDichVu(String tenDichVu) {
+        this.tenDichVu = tenDichVu;
+    }
+
+    public float getGiaDichVu() {
+        return giaDichVu;
+    }
+
+    public void setGiaDichVu(float giaDichVu) {
+        this.giaDichVu = giaDichVu;
+    }
+
+    public String getDesDichVu() {
+        return desDichVu;
+    }
+
+    public void setDesDichVu(String desDichVu) {
+        this.desDichVu = desDichVu;
+    }
+
+    public String getImgDichVu() {
+        return imgDichVu;
+    }
+
+    public void setImgDichVu(String imgDichVu) {
+        this.imgDichVu = imgDichVu;
+    }
+
+    public int getiDChiTietThuePhong() {
+        return iDChiTietThuePhong;
+    }
+
+    public void setiDChiTietThuePhong(int iDChiTietThuePhong) {
+        this.iDChiTietThuePhong = iDChiTietThuePhong;
+    }
+
     @Override
     public String toString() {
-        return "DichVuPhong{" + "iDDichVuPhong=" + iDDichVuPhong + ", iDPhong=" + iDPhong + '}';
+        return "DichVuPhong{" + "iDDichVuPhong=" + iDDichVuPhong + ", iDPhong=" + iDPhong + ", iDDichVu=" + iDDichVu + ", soLuongDichVu=" + soLuongDichVu + ", tenDichVu=" + tenDichVu + ", giaDichVu=" + giaDichVu + ", desDichVu=" + desDichVu + ", imgDichVu=" + imgDichVu + ", iDChiTietThuePhong=" + iDChiTietThuePhong + '}';
     }
+
+    
+
+    
     
 }

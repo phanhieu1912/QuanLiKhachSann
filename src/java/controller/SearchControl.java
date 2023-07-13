@@ -5,8 +5,10 @@
 package controller;
 
 import dao.DAO;
-import entity.Category;
-import entity.Product;
+import entity.KhachHang;
+
+import entity.LoaiPhong;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -32,20 +34,15 @@ public class SearchControl extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        String nameSearch = request.getParameter("txt"); 
+         response.setContentType("text/html;charset=UTF-8");
         DAO dao =new DAO();
-        List<Product> list=dao.searchByName(nameSearch);
-        List<Category>list2 =dao.getAllCategory();
-         Product last =dao.getLast();
+        String nameSearch = request.getParameter("txt");
+        List<KhachHang> listKHH =dao.getAllKhachHang();
+        List<KhachHang> list = dao.searchByName(nameSearch);
+        request.setAttribute("listKHH", list);
+        request.setAttribute("txtS", nameSearch);
         
-       request.setAttribute("list1", list);
-       request.setAttribute("listC", list2);
-           request.setAttribute("list3", last);
-           request.setAttribute("txtS", nameSearch);
-
-       request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+        request.getRequestDispatcher("ListSearchInformationCustomerinAdmin.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

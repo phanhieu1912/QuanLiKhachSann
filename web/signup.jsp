@@ -1,52 +1,4 @@
-<!--<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/stylelogin.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <h1>Sign up</h1>
-        <form action="SignUpConTrol" method="post">
-            <div class="form-control">
-                <input name="user" id="username" type="text" placeholder="Username">
-                <small></small>
-                <span></span>
-            </div>
-            <div class="form-control">
-                <input name="email" id="email" type="email" placeholder="Email">
-                <small></small>
-                <span></span>
-            </div>
-            <div class="form-control">
-                <input name="pass" id="password" type="password" placeholder="Password">
-                <small></small>
-                <span></span>
-            </div>
-            <div class="form-control">
-                <input name="rpass" id="confirm-password" type="password" placeholder="Confirm Password">
-                <small></small>
-                <span></span>
-            </div>
-            <div class="form-control">
-                <input name="phone" id="phone" type="tel" placeholder="Phone Number" pattern="[0]{1}[0-9]{9}">
-                <small></small>
-                <span></span>
-            </div>
-    
-            <button class="btn-submit" type="submit">Sign up</button>
-            <div class="signup-link">
-                You have account?
-                <a href="home.jsp">Log in</a>
-            </div>
-        </form>
-    </div>
-    <script src="app.js"></script>
-</body>
-</html>-->
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -61,42 +13,46 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-        <link href="css/stylelogin.css" rel="stylesheet" type="text/css"/>
+        <link href="css/styleloginn.css" rel="stylesheet" type="text/css"/>
         <title>Login Form</title>
     </head>
     <body>
         <div class="container">
-        <h1>Log in</h1>
+        <h1>Sign Up</h1>
          
-
+        <style>
+            .text-danger{
+            color:#DC3545;
+        }
+        </style>
             <form action="SignUpConTrol" method="post" class="form-signup">
                 <form class="form-signin" action="SignUpConTrol" method ="post">
                     <div class="form-control">
                         <input name="user" id="username" type="text" placeholder="Username">
                         <small></small>
-                        <span></span>
+                        <!--<span></span>-->
                     </div>
                     <div class="form-control">
                         <input name="email" id="email" type="email" placeholder="Email">
                         <small></small>
-                        <span></span>
+                        <!--<span></span>-->
                     </div>
                     <div class="form-control">
                         <input name="pass" id="password" type="password" placeholder="Password">
                         <small></small>
-                        <span></span>
+                        <!--<span></span>-->
                     </div>
                     <div class="form-control">
                         <input name="repass" id="confirm-password" type="password" placeholder="Confirm Password">
                         <small></small>
-                        <span></span>
+                        <!--<span></span>-->
                     </div>
                     <div class="form-control">
                         <input name="phone" id="phone" type="tel" placeholder="Phone Number" pattern="[0]{1}[0-9]{9}">
                         <small></small>
-                        <span></span>
+                        <!--<span></span>-->
                     </div>
-
+<p class="text-danger">${mess}</p>
                     <button class="btn-submit" type="submit">Sign up</button>
                     <div class="signup-link">
                         You have account?
@@ -129,6 +85,39 @@
                 $('#logreg-forms #btn-signup').click(toggleSignUp);
                 $('#logreg-forms #cancel_signup').click(toggleSignUp);
             })
+            
+	
+		$(document).ready(function() {
+			$("#check-btn").click(function() {
+				var email = $("#email-input").val();
+				if (isValidEmail(email)) {
+					var domain = email.split("@")[1];
+					$.ajax({
+						url: "https://api.trumail.io/v2/lookups/json?email=" + email,
+						type: "GET",
+						dataType: "json",
+						success: function(data) {
+							if (data.deliverable) {
+								alert(email + " is a valid email address.");
+							} else {
+								alert(email + " is not a valid email address.");
+							}
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							alert("Error: " + textStatus + " - " + errorThrown);
+						}
+					});
+				} else {
+					alert("Please enter a valid email address.");
+				}
+			});
+
+			function isValidEmail(email) {
+				var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+				return emailRegex.test(email);
+			}
+		});
+	
         </script>
     </body>
 </html>

@@ -36,16 +36,37 @@ public class SignUpConTrol extends HttpServlet {
         String phonenumber = request.getParameter("phone");
         String pass = request.getParameter("pass");
         String re_pass = request.getParameter("repass");
-        
-            DAO dao =new DAO();
-            Account a = dao .checkAccountExist(user);
-            if(a==null){
-                dao.singup(user, re_pass,email,phonenumber);
-                response.sendRedirect("login.jsp");
-            }else{
-                response.sendRedirect("signup.jsp");
+
+        DAO dao = new DAO();
+        Account a = dao.checkAccountExist(user);
+        Account e = dao.checkEmailExist(email);
+        Account p = dao.checkPhoneExist(phonenumber);
+        if (a == null) {
+            if (e == null) {
+                if (p == null) {
+                    if(pass.equals(re_pass)){
+                        dao.singup(user, re_pass, email, phonenumber);
+                    dao.addIDKhachHang(user);
+                    response.sendRedirect("home.jsp");
+                    }else{
+                        request.setAttribute("mess", "pass is not the same as repass! ");
+                    request.getRequestDispatcher("signup.jsp").forward(request, response); 
+                    }
+                    
+                } else {
+                    request.setAttribute("mess", "Phone already exist!");
+                    request.getRequestDispatcher("signup.jsp").forward(request, response);
+                }
+            } else {
+                request.setAttribute("mess", "Email already exist!");
+                request.getRequestDispatcher("signup.jsp").forward(request, response);
             }
-        
+
+        } else {
+            request.setAttribute("mess", "Account already exist!");
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
+
+        }
 
     }
 
